@@ -1,0 +1,135 @@
+//Task No. 1
+
+function cubeArray(numbers) {
+  return numbers.map(num => num ** 3);
+}
+
+// Task No. 2
+
+function sumArray(numbers) {
+  return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+}
+
+// Task No.3
+
+function isPrime(num) {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  if (num % 2 === 0 || num % 3 === 0) return false;
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+  }
+  return true;
+}
+
+function filterPrimes(numbers) {
+  return numbers.filter(isPrime);
+}
+
+Task 4:
+
+function averageSquaredOddNumbers(numbers) {
+  // Filter out the odd numbers
+  const oddNumbers = numbers.filter(num => num % 2 !== 0);
+
+  // Square each odd number
+  const squaredOdds = oddNumbers.map(num => num ** 2);
+
+  // Calculate the sum of squared odd numbers
+  const sumOfSquares = squaredOdds.reduce((acc, curr) => acc + curr, 0);
+
+  // Calculate the average
+  const average = squaredOdds.length > 0 ? sumOfSquares / squaredOdds.length : 0;
+
+  return average;
+}
+
+
+Task 5:
+
+function longestString(strings) {
+  // Ensure we have strings to work with
+  if (strings.length === 0) return '';
+
+  // Use reduce to find the longest string
+  return strings.reduce((longest, current) => current.length > longest.length ? current : longest, '');
+}
+
+Task 6:
+
+function capitalizeWords(sentence) {
+  return sentence
+    .split(' ') // Split the sentence into words
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+    .join(' '); // Join the words back into a sentence
+}
+
+Task 7:
+
+function filterPassedStudents(students) {
+  return students.filter(student => student.score >= 60);
+}
+
+Task 8:
+function createInstanceCounter() {
+  let count = 0; // Private variable
+
+  return function() {
+    count += 1; // Increment count
+    return count; // Return the current count
+  };
+}
+
+Task 9:
+function promiseCalculator(num1, num2, operation) {
+  return new Promise((resolve, reject) => {
+    switch (operation) {
+      case 'addition':
+        resolve(num1 + num2);
+        break;
+      case 'subtraction':
+        resolve(num1 - num2);
+        break;
+      case 'multiplication':
+        resolve(num1 * num2);
+        break;
+      case 'division':
+        if (num2 === 0) {
+          reject('Error: Division by zero is not allowed.');
+        } else {
+          resolve(num1 / num2);
+        }
+        break;
+      default:
+        reject('Error: Invalid operation.');
+    }
+  });
+}
+
+// Example usage:
+promiseCalculator(10, 5, 'addition')
+  .then(result => console.log('Result:', result))
+  .catch(error => console.error('Error:', error));
+
+promiseCalculator(10, 0, 'division')
+  .then(result => console.log('Result:', result))
+  .catch(error => console.error('Error:', error));
+
+promiseCalculator(10, 5, 'invalidOperation')
+  .then(result => console.log('Result:', result))
+  .catch(error => console.error('Error:', error));
+
+Task 10:
+
+function calculateTotalScore(objects) {
+  let totalScore = 0;
+
+  objects.forEach(obj => {
+    totalScore += obj.score;
+  });
+
+  return totalScore;
+}
+
+
+
